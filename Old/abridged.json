@@ -1,0 +1,14 @@
+{
+	"cities":[
+		{
+			"city":"http://www.wikidata.org/entity/Q1353",
+			"cityLabel":"Delhi",
+			"population":"26495000"
+		},
+		{
+			"city":"http://www.wikidata.org/entity/Q8686",
+			"cityLabel":"Shanghai",
+			"population":"23390000"
+		}
+	]
+}
