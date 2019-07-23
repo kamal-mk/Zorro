@@ -7,7 +7,7 @@ from collections import Counter
 import string
 import json
 
-def zomato(city):
+def zomato_finder(city):
     #Zomato API KEY = 2179390cabf9a71c3b3835aeb0ddb9b5
     #Limit 1000 Calls/day
     
@@ -15,32 +15,34 @@ def zomato(city):
     key = '2179390cabf9a71c3b3835aeb0ddb9b5'
     url_id = "https://developers.zomato.com/api/v2.1/cities?q="+city
 
-    if __name__ == '__main__':
-        r = requests.get(url_id, headers={'user-key': key})
-        if r.ok:
-            id_data = r.json()
+    #if __name__ == '__main__':
+    r = requests.get(url_id, headers={'user-key': key})
+    if r.ok:
+        id_data = r.json()
             #print(data) 
-        else:
-            print('Failure')
-            
+    else:
+        print('Failure')
+    #else:
+    #    print('Level one Failure')
+       
     #just parsing through to get to the ID we need
     g=id_data['location_suggestions']
     h=g[0]
     id=h['id']
     idreturn="The Zomato ID number for "+city+" is: "+str(id)
-    print(idreturn)
+    #print(idreturn)
 
     #Now we have city id number
     #Check if collections available for this city
     url_col="https://developers.zomato.com/api/v2.1/collections?city_id="+str(id)
 
-    if __name__ == '__main__':
-        r = requests.get(url_col, headers={'user-key': key})
-        if r.ok:
-            col_data = r.json()
-            #print(col_data) 
-        else:
-            print('Failure')
+#if __name__ == '__main__':
+    r = requests.get(url_col, headers={'user-key': key})
+    if r.ok:
+        col_data = r.json()
+        #print(col_data) 
+    else:
+        print('Failure')
             
     if len(col_data) !=4: #checks if collections exist for that city
         #we're sending collections back
@@ -75,4 +77,4 @@ def zomato(city):
                     #adj_title=h['name']+": Best Rated food in "+city
   
   
-zomato('london')
+#zomato('london')

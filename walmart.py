@@ -16,6 +16,6 @@ def get_items(query):
         items.append(p['name'])
     return items
     
-print(get_items("ipad"))
-#add price and other functionality. eventually want to be pulling pictures etc
-        
+ja=get_items("ipad")
+#add price and other functionality. also want to pull pictures etc
+
