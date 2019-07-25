@@ -6,6 +6,8 @@ import urllib
 from collections import Counter 
 import string
 import json
+from geotext import GeoText
+
 
 
 citylist=set()
@@ -46,20 +48,28 @@ def search_web(new_query):
         except:
             continue
     alltext=' '.join(descriptions) #all descriptions joined
+    #print(alltext)
+    
+    #GEOTEXT PART
+    ranked_cities={}
+    lower_cities=[]
+    places = GeoText(alltext) #extracts cities using GeoText package
+    for p in places.cities:  #makes lowercase
+        lower_cities.append(p.lower()) 
+    
     alltext_p1=alltext.lower() #make lowercase
     alltext_p2=alltext_p1.translate(str.maketrans('', '', string.punctuation)) #remove punctuation
     all_split=alltext_p2.split()  #split into list
-
-    ranked_cities={}
-    ranked_countries={}
-    citymatches=(set(all_split) & citylist)
-    countrymatches=(set(all_split) & countrylist)
+    all_cities=all_split+lower_cities
+    citymatches=(set(all_cities) & citylist)
+    #print('type is',type(all_split))
+    #countrymatches=(set(all_split) & countrylist)
     #print(citymatches)
     for y in citymatches:
-        ranked_cities.update({y:all_split.count(y)})
+        ranked_cities.update({y:all_cities.count(y)})
     #print(ranked_cities)
-    for y in countrymatches:
-        ranked_countries.update({y:all_split.count(y)})
+    #for y in countrymatches:
+    #    ranked_countries.update({y:all_split.count(y)})
     return ranked_cities
     
 def chooser(ranked_cities,ratio_cutoff):    

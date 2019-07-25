@@ -9,6 +9,7 @@ def airport_code(city,country):
         the_page = response.read()
     decoded_data=json.loads(the_page)
     found_code=decoded_data["Places"][0]['PlaceId']
+    #print(found_code)
     return found_code
 
 
@@ -20,7 +21,14 @@ def air_quotes(origin_code,dest_code,date):
     with urllib.request.urlopen(req) as response:
        the_page = response.read()
     decoded_data=json.loads(the_page)
-    min_price=decoded_data["Quotes"][0]['MinPrice']
-    direct_flight=decoded_data["Quotes"][0]['Direct'] #returns boolean if flights is direct
-    return min_price,direct_flight
+    if len(decoded_data["Quotes"])!=0:
+        min_price=decoded_data["Quotes"][0]['MinPrice']
+        direct_flight=decoded_data["Quotes"][0]['Direct'] #returns boolean if flights is direct
+        return min_price,direct_flight
+    #add else statement
 
+#countrycode_user='USA' 
+#countrycode_destination='USA' 
+#date='2019-09-01'
+#user_loc='Boston'
+#chosen_city='Chicago'

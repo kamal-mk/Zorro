@@ -42,7 +42,7 @@ def zomato_finder(city):
         col_data = r.json()
         #print(col_data) 
     else:
-        print('Failure')
+        print('Failure ')
             
     if len(col_data) !=4: #checks if collections exist for that city
         #we're sending collections back
@@ -62,7 +62,7 @@ def zomato_finder(city):
             print(newurl)
         
     else:
-        print('No Collections') 
+        print('No Collections for this city on Zomato') 
         url_locdeets='https://developers.zomato.com/api/v2.1/location_details?entity_id='+str(id)+'&entity_type=city'
         #Must send something else back - establishment types
         if __name__ == '__main__':
@@ -75,6 +75,8 @@ def zomato_finder(city):
                     print(h['name'])
                     print(h['url'])
                     #adj_title=h['name']+": Best Rated food in "+city
+        else:
+            print('No restaurants in this city listed on Zomato')
   
   
 #zomato('london')
