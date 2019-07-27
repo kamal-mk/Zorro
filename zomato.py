@@ -21,15 +21,18 @@ def zomato_finder(city):
         id_data = r.json()
             #print(data) 
     else:
-        print('Failure')
+        print('Error in reaching Zomato')
     #else:
     #    print('Level one Failure')
        
     #just parsing through to get to the ID we need
+
     g=id_data['location_suggestions']
     h=g[0]
     id=h['id']
     idreturn="The Zomato ID number for "+city+" is: "+str(id)
+
+    #print('Error in finding Zomato ID')
     #print(idreturn)
 
     #Now we have city id number
@@ -42,7 +45,7 @@ def zomato_finder(city):
         col_data = r.json()
         #print(col_data) 
     else:
-        print('Failure ')
+        print('Error in collecting Zomato data')
             
     if len(col_data) !=4: #checks if collections exist for that city
         #we're sending collections back
@@ -58,6 +61,8 @@ def zomato_finder(city):
             second=temp.find('/',23)
             tempone=temp[0:first+1]
             temptwo=temp[second:]
+            #If city is multiple words, concatenate with a '-'
+            city=city.replace(" ","-")
             newurl=tempone+city+temptwo
             print(newurl)
         
@@ -79,4 +84,4 @@ def zomato_finder(city):
             print('No restaurants in this city listed on Zomato')
   
   
-#zomato('london')
+zomato_finder('sao paulo')

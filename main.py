@@ -12,11 +12,20 @@ loc_ratio=1.5 #if a city is 1.5x more likely than the second greates option it i
 
 #Call to loc_finder
 print('Enter search request: ', end='') 
-query=input() 
+query=input()
+#Runs two different queries to 
 loc_query="what city is "+query+" located in"
+loc_query2="where is "+query+"located"
 ranked_cities=search_web(loc_query)
-chosen_city=chooser(ranked_cities,loc_ratio) #give it all cities dict and ratio cutoff (3x bigger than 2nd most common in this case)
-print('The chosen city is: ',chosen_city)
+#print(ranked_cities)
+ranked_cities2=search_web(loc_query2)
+chosen_1=chooser(ranked_cities,loc_ratio) #give it all cities dict and ratio cutoff (3x bigger than 2nd most common in this case)
+chosen_2=chooser(ranked_cities2,loc_ratio)
+if chosen_1==chosen_2:
+    chosen_city=chosen_1
+    print('The chosen city is:',chosen_city)
+else:
+    print('Multiple possible cities, failed to reach consensus')
 
 #Call to geo_distance.py to find distance between user and event location
 try:
