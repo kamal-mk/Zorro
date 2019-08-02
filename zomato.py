@@ -84,4 +84,4 @@ def zomato_finder(city):
             print('No restaurants in this city listed on Zomato')
   
   
-zomato_finder('sao paulo')
+#zomato_finder('sao paulo')

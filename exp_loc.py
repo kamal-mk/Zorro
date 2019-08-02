@@ -98,16 +98,4 @@ def chooser(ranked_cities,ratio_cutoff):
             return max_keys[0]
         
 
-#Finds distance between cities using Google's map feature. More accurate but breaks often     
-#def distance_cities(city1,city2):
-#    newquery='distance from '+city1+' to '+city2
-#    new_query = urllib.parse.quote_plus(newquery) # Format into URL encoding if there are spaces
-#    ua = UserAgent()
-#    google_url = "https://www.google.com/search?q=" + new_query + "&num=1"
-#    response = requests.get(google_url, {"User-Agent": ua.random})
-#    soup = BeautifulSoup(response.text, "html.parser")
-#    result_div = soup.find_all('div')
-#    print(result_div)
-  
-
 

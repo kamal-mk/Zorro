@@ -50,47 +50,47 @@ except:
 #Calls to each API
 #SkyScanner API Call
 
-#Need to find these automatically
-countrycode_user='USA' 
-countrycode_destination='USA' 
-date='2019-09-01'
-#currently country code part doesn't work well if not USA.
-try: 
-    air_code_user=airport_code(user_loc.capitalize(),countrycode_user)
-    air_code_destination=airport_code(chosen_city.capitalize(),countrycode_destination)
-    quotes=air_quotes(air_code_user,air_code_destination,date)
-    print('-------------------------------------')
-    print('Skyscanner flight advertisements:')
-    if quotes[1]==True:
-        print('Direct flights from',user_loc,'to',chosen_city,'from $',round(quotes[0]))
-    else:
-        print('Flights from',user_loc,'to',chosen_city,'from $',round(quotes[0]))
+# #Need to find these automatically
+# countrycode_user='USA' 
+# countrycode_destination='USA' 
+# date='2019-09-01'
+# #currently country code part doesn't work well if not USA.
+# try: 
+    # air_code_user=airport_code(user_loc.capitalize(),countrycode_user)
+    # air_code_destination=airport_code(chosen_city.capitalize(),countrycode_destination)
+    # quotes=air_quotes(air_code_user,air_code_destination,date)
+    # print('-------------------------------------')
+    # print('Skyscanner flight advertisements:')
+    # if quotes[1]==True:
+        # print('Direct flights from',user_loc,'to',chosen_city,'from $',round(quotes[0]))
+    # else:
+        # print('Flights from',user_loc,'to',chosen_city,'from $',round(quotes[0]))
 
-except:
-    print('No available flights found')
+# except:
+    # print('No available flights found')
 
-#Booking.com API Call
+# #Booking.com API Call
 
 
-#Walmart API Call
-try:
-    list_products=get_items(query)
-    print('---------------------------------------')
-    print('Product Ads from Walmart:')
-    for x in range(0,len(list_products)):
-        print(list_products[x])
+# #Walmart API Call
+# try:
+    # list_products=get_items(query)
+    # print('---------------------------------------')
+    # print('Product Ads from Walmart:')
+    # for x in range(0,len(list_products)):
+        # print(list_products[x])
     
-except:
-    print('No possible product ads found on Walmart.com')
+# except:
+    # print('No possible product ads found on Walmart.com')
 
 
-#Zomato API Call
-try:
-    print('---------------------------------------')
-    zomato_finder(chosen_city)
-except:
-    print('No possible restaurants found for that city')
-    #check if a city collections would work.
+# #Zomato API Call
+# try:
+    # print('---------------------------------------')
+    # zomato_finder(chosen_city)
+# except:
+    # print('No possible restaurants found for that city')
+    # #check if a city collections would work.
     
 #Eventbrite API Call
 
