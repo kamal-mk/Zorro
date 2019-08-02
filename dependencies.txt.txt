@@ -1,0 +1,6 @@
+Dependencies (python3):
+
+Beautiful soup 4 (pip install beautifulsoup4)
+requests (pip install requests)
+geotext (pip install geotext)
+fake user agent (pip install fake_useragent)
